@@ -10,7 +10,13 @@ export const scienceQuestions: Question[] = [
     choices: ['Group A', 'Group B', 'Group C', 'All groups were equal'],
     answerIndex: 2,
     explanation: 'Group C reached 15.6 cm on Day 14, higher than Group A (9.8 cm) and Group B (15.2 cm).',
+    distractorRationale: {
+      0: 'Group A reached only 9.8 cm by Day 14 — the lowest of the three groups.',
+      1: 'Group B reached 15.2 cm, close to but still just below Group C\'s 15.6 cm.',
+      3: 'The groups did not grow equally — the table shows a distinct final height for each group.',
+    },
     skill: 'Data interpretation',
+    domain: 'interpretation-of-data',
   },
   {
     id: 'sci-2',
@@ -20,7 +26,13 @@ export const scienceQuestions: Question[] = [
     choices: ['Plant height', 'Amount of water', 'Hours of sunlight exposure', 'Type of soil'],
     answerIndex: 2,
     explanation: 'The researcher deliberately varied sunlight exposure (4, 8, or 12 hours) across groups; height was the measured (dependent) variable.',
+    distractorRationale: {
+      0: 'Height is the measured outcome — the dependent variable — not the variable the researcher deliberately changed.',
+      1: 'The passage says the seedlings "were... watered equally," so water amount was held constant, not varied.',
+      3: 'The passage says all groups were "planted in the same soil," so soil type was held constant, not varied.',
+    },
     skill: 'Experimental design',
+    domain: 'scientific-investigation',
   },
   {
     id: 'sci-3',
@@ -30,7 +42,13 @@ export const scienceQuestions: Question[] = [
     choices: ['Group A (4.7 cm)', 'Group B (7.8 cm)', 'Group C (8.0 cm)', 'They grew equally'],
     answerIndex: 2,
     explanation: 'Group C increased from 7.6 to 15.6 cm (a gain of 8.0 cm), slightly more than Group B\'s gain of 7.8 cm.',
+    distractorRationale: {
+      0: "Group A's gain of 4.7 cm is the smallest of the three groups, not the largest.",
+      1: "Group B's gain of 7.8 cm is close to Group C's but still slightly smaller.",
+      3: 'The three groups gained different amounts — subtracting each group\'s Day 7 height from its Day 14 height gives three different values.',
+    },
     skill: 'Data interpretation',
+    domain: 'interpretation-of-data',
   },
   {
     id: 'sci-4',
@@ -45,7 +63,13 @@ export const scienceQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'Height increased sharply from Group A to B (9.8 → 15.2 cm) but only slightly from B to C (15.2 → 15.6 cm), indicating diminishing returns.',
+    distractorRationale: {
+      0: 'The jump from Group A to B (9.8→15.2 cm) is much larger than the jump from B to C (15.2→15.6 cm) — the rate did not stay the same.',
+      2: 'Height did not decrease for Group C — at 15.6 cm, it was still the tallest of the three groups.',
+      3: 'The data clearly shows sunlight affecting height, since all three groups reached different final heights.',
+    },
     skill: 'Trend analysis',
+    domain: 'interpretation-of-data',
   },
   {
     id: 'sci-5',
@@ -55,7 +79,13 @@ export const scienceQuestions: Question[] = [
     choices: ['5.0 cm', '9.8 cm', 'approximately 15.7 cm', '25.0 cm'],
     answerIndex: 2,
     explanation: 'Since height gains leveled off between 8 and 12 hours, a further increase to 16 hours would likely produce a height only marginally higher than Group C\'s 15.6 cm.',
+    distractorRationale: {
+      0: 'This is lower than every group\'s actual height in the table — the trend shows heights increasing with more sunlight, not dropping this low.',
+      1: 'This matches Group A\'s height at only 4 hours of sunlight — with 16 hours, the trend predicts a higher value, not the same one.',
+      3: 'This assumes growth kept accelerating, but the data shows gains leveling off between 8 and 12 hours, so a large jump to 25 cm doesn\'t fit the trend.',
+    },
     skill: 'Prediction / extrapolation',
+    domain: 'evaluating-arguments-models',
   },
   // Passage 2: Temperature and Enzyme Reaction Rate
   {
@@ -66,7 +96,13 @@ export const scienceQuestions: Question[] = [
     choices: ['10°C', '30°C', '40°C', '50°C'],
     answerIndex: 2,
     explanation: 'The table shows the reaction rate peaked at 9.1 µmol/min at 40°C.',
+    distractorRationale: {
+      0: '10°C has the lowest reaction rate in the table (1.2 µmol/min), not the highest.',
+      1: "30°C's rate (6.8 µmol/min) is high but still below the peak at 40°C (9.1 µmol/min).",
+      3: '50°C shows a sharp drop to 2.3 µmol/min, well below the peak — this is past the point where the enzyme denatures.',
+    },
     skill: 'Data interpretation',
+    domain: 'interpretation-of-data',
   },
   {
     id: 'sci-7',
@@ -81,7 +117,13 @@ export const scienceQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'The passage states the enzyme begins denaturing (losing its structural shape) above 45°C, which would sharply reduce its activity.',
+    distractorRationale: {
+      0: 'The passage doesn\'t mention the substrate running out — it specifically explains the enzyme itself changing shape above 45°C.',
+      2: 'There\'s no indication in the passage of the reaction reversing direction — the rate simply falls due to denaturing.',
+      3: 'The rate was clearly positive and rising up through 40°C, so temperature wasn\'t too low for the reaction at these points.',
+    },
     skill: 'Scientific reasoning',
+    domain: 'evaluating-arguments-models',
   },
   {
     id: 'sci-8',
@@ -91,7 +133,13 @@ export const scienceQuestions: Question[] = [
     choices: ['constant', 'generally increasing', 'generally decreasing', 'random'],
     answerIndex: 1,
     explanation: 'Reaction rate rises steadily from 1.2 to 9.1 µmol/min as temperature increases from 10°C to 40°C.',
+    distractorRationale: {
+      0: 'The rate rises steadily from 1.2 to 9.1 µmol/min across this range — it is not constant.',
+      2: 'The rate increases, not decreases, from 10°C to 40°C, based on the table.',
+      3: 'The increase follows a clear, steady pattern at each step from 10°C to 40°C — it isn\'t random.',
+    },
     skill: 'Trend analysis',
+    domain: 'interpretation-of-data',
   },
   {
     id: 'sci-9',
@@ -106,7 +154,13 @@ export const scienceQuestions: Question[] = [
     ],
     answerIndex: 2,
     explanation: 'Since denaturing begins just above 45°C, the rate at exactly 45°C is likely past its peak but not yet as low as the 50°C value.',
+    distractorRationale: {
+      0: 'Since denaturing begins just above 45°C, the rate at 45°C is more likely past its peak than higher than the 40°C value.',
+      1: 'A rate near zero fits temperatures well above the denaturing threshold, but 45°C is right at the edge, so a more moderate drop is more reasonable.',
+      3: "10°C's rate (1.2 µmol/min) is much lower than expected at 45°C, which is still relatively close to the enzyme's peak temperature.",
+    },
     skill: 'Prediction / extrapolation',
+    domain: 'evaluating-arguments-models',
   },
   {
     id: 'sci-10',
@@ -116,7 +170,13 @@ export const scienceQuestions: Question[] = [
     choices: ['Temperature', 'Reaction rate', 'Amount of enzyme', 'Amount of substrate'],
     answerIndex: 1,
     explanation: 'Reaction rate was measured in response to the manipulated variable, temperature, making it the dependent variable.',
+    distractorRationale: {
+      0: 'Temperature is the variable the researchers deliberately changed, which makes it the independent variable, not the dependent one.',
+      2: 'The passage describes "a fixed amount of enzyme," so this was held constant, not measured as an outcome.',
+      3: 'The substrate amount was also part of the fixed experimental setup, not the measured outcome.',
+    },
     skill: 'Experimental design',
+    domain: 'scientific-investigation',
   },
   // Passage 3: Salinity and Fish Species Diversity
   {
@@ -127,7 +187,13 @@ export const scienceQuestions: Question[] = [
     choices: ['Site 1', 'Site 2', 'Site 3', 'Site 4'],
     answerIndex: 2,
     explanation: 'Site 3, with a salinity of 25 ppt, had 21 species observed — the highest of the four sites.',
+    distractorRationale: {
+      0: 'Site 1 had only 6 species observed — the fewest of the four sites, not the most.',
+      1: 'Site 2 had 14 species observed, more than Site 1 but still fewer than Site 3\'s 21.',
+      3: 'Site 4 had 11 species observed, well below Site 3\'s 21.',
+    },
     skill: 'Data interpretation',
+    domain: 'interpretation-of-data',
   },
   {
     id: 'sci-12',
@@ -137,7 +203,13 @@ export const scienceQuestions: Question[] = [
     choices: ['Site 1', 'Site 2', 'Site 3', 'Site 4'],
     answerIndex: 0,
     explanation: 'Site 1, with the lowest salinity (5 ppt), had only 6 species observed — the fewest of the four sites.',
+    distractorRationale: {
+      1: 'Site 2 had 14 species observed, more than Site 1\'s 6.',
+      2: 'Site 3 had the most species observed (21), the opposite of the fewest.',
+      3: 'Site 4 had 11 species observed, more than Site 1\'s 6.',
+    },
     skill: 'Data interpretation',
+    domain: 'interpretation-of-data',
   },
   {
     id: 'sci-13',
@@ -152,7 +224,13 @@ export const scienceQuestions: Question[] = [
     ],
     answerIndex: 2,
     explanation: 'Diversity rises from Site 1 (5 ppt, 6 species) to Site 3 (25 ppt, 21 species), then falls at Site 4 (35 ppt, 11 species), suggesting an optimal middle range.',
+    distractorRationale: {
+      0: 'Diversity doesn\'t increase the whole way through — it drops at Site 4 (35 ppt) after peaking at Site 3 (25 ppt).',
+      1: 'Diversity doesn\'t decrease steadily — it rises from Site 1 to Site 3 before falling at Site 4.',
+      3: 'The data shows a clear rise-then-fall pattern tied to salinity, so the two are related, not independent.',
+    },
     skill: 'Trend analysis',
+    domain: 'evaluating-arguments-models',
   },
   {
     id: 'sci-14',
@@ -162,7 +240,13 @@ export const scienceQuestions: Question[] = [
     choices: ['25', '21', 'approximately 7', '14'],
     answerIndex: 2,
     explanation: 'Since diversity already declined from 21 species at 25 ppt to 11 species at 35 ppt, a further increase to 45 ppt would likely continue that decline to a similarly low value.',
+    distractorRationale: {
+      0: 'This is even higher than Site 3\'s peak of 21, but the trend shows diversity falling past that point, not climbing further.',
+      1: '21 was Site 3\'s count at 25 ppt; since diversity already fell to 11 by 35 ppt, continuing to 45 ppt should keep dropping, not return to the peak.',
+      3: '14 was Site 2\'s count at 15 ppt; the declining trend at high salinity suggests a lower count at 45 ppt, not a mid-range value.',
+    },
     skill: 'Prediction / extrapolation',
+    domain: 'evaluating-arguments-models',
   },
   {
     id: 'sci-15',
@@ -172,6 +256,12 @@ export const scienceQuestions: Question[] = [
     choices: ['Salinity', 'Number of species observed', 'Site number', 'Time of year'],
     answerIndex: 1,
     explanation: 'The researchers measured the number of species observed in response to the naturally varying salinity levels at each site.',
+    distractorRationale: {
+      0: 'Salinity varies naturally across the sites and is the explanatory variable here, not the measured outcome.',
+      2: 'Site number is just a label for location, not a measured scientific outcome.',
+      3: 'Time of year isn\'t described as varying across the sites in this study.',
+    },
     skill: 'Experimental design',
+    domain: 'scientific-investigation',
   },
 ]

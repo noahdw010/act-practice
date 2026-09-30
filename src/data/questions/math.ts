@@ -8,7 +8,14 @@ export const mathQuestions: Question[] = [
     choices: ['3', '5', '7', '15', '29/3'],
     answerIndex: 1,
     explanation: '3x + 7 = 22 → 3x = 15 → x = 5.',
+    distractorRationale: {
+      0: 'Too small — check it: 3(3) + 7 = 16, not 22.',
+      2: "Doesn't satisfy the equation: 3(7) + 7 = 28, not 22.",
+      3: 'This is 22 − 7 with the final division by 3 forgotten. You still need 15 ÷ 3 = 5.',
+      4: 'This comes from adding 7 instead of subtracting it: (22 + 7)/3. Move the 7 to the other side by subtracting.',
+    },
     skill: 'Linear equations',
+    domain: 'preparing-for-higher-math',
   },
   {
     id: 'math-2',
@@ -17,7 +24,14 @@ export const mathQuestions: Question[] = [
     choices: ['−1', '3', '9', '15', '21'],
     answerIndex: 3,
     explanation: 'f(−2) = 2(4) − 3(−2) + 1 = 8 + 6 + 1 = 15.',
+    distractorRationale: {
+      0: 'This drops the squared term\'s sign flip — (−2)² is positive 4, not negative.',
+      1: 'This comes from treating −3x as −3(2) = −6 instead of −3(−2) = +6, a sign error on the middle term.',
+      2: 'This misses the +1 constant at the end: 2(4) − 3(−2) = 14, and forgetting to add 1 gives 14, not 9 — double check each term is included.',
+      4: 'This comes from computing 2x² as (2x)² = 16 instead of 2(x²) = 2(4) = 8.',
+    },
     skill: 'Functions',
+    domain: 'preparing-for-higher-math',
   },
   {
     id: 'math-3',
@@ -26,7 +40,14 @@ export const mathQuestions: Question[] = [
     choices: ['7x³y⁴', '12x³y⁴', '12x²y³', '7x²y³', '12x³y³'],
     answerIndex: 1,
     explanation: 'Multiply coefficients and add exponents of like bases: 3·4 = 12, x²·x = x³, y·y³ = y⁴.',
+    distractorRationale: {
+      0: 'This adds the coefficients (3 + 4 = 7) instead of multiplying them. Coefficients multiply, just like the variables.',
+      2: "This keeps y's exponent at 3 instead of adding: y¹ · y³ = y⁴, not y³.",
+      3: 'This both adds the coefficients instead of multiplying AND drops the y exponent addition.',
+      4: "This keeps y's exponent at 3 (from 1 + 3 miscounted) instead of correctly adding to 4.",
+    },
     skill: 'Exponents & polynomials',
+    domain: 'preparing-for-higher-math',
   },
   {
     id: 'math-4',
@@ -35,7 +56,14 @@ export const mathQuestions: Question[] = [
     choices: ['6π', '12π', '18π', '36π', '144π'],
     answerIndex: 3,
     explanation: 'Area = πr² = π(6²) = 36π.',
+    distractorRationale: {
+      0: 'This is just the radius times π — the circumference formula uses 2πr, and area needs r², not r.',
+      1: 'This is the diameter times π (2r·π), which is actually the circumference, not the area.',
+      2: 'This looks like 3πr (18π = 3·6·π), which doesn\'t match either the area or circumference formula.',
+      4: 'This squares the diameter (12² = 144) instead of the radius. Area uses r², not the diameter squared.',
+    },
     skill: 'Geometry: circles',
+    domain: 'preparing-for-higher-math',
   },
   {
     id: 'math-5',
@@ -44,7 +72,14 @@ export const mathQuestions: Question[] = [
     choices: ['1/2', '1', '2', '3', '6'],
     answerIndex: 2,
     explanation: 'Slope = (9 − 3) / (5 − 2) = 6/3 = 2.',
+    distractorRationale: {
+      0: 'This flips the slope ratio, computing (5 − 2)/(9 − 3) = 3/6 instead of (9 − 3)/(5 − 2).',
+      1: "This subtracts the x's and y's but divides incorrectly, or treats the rise and run as equal — recompute the ratio directly.",
+      3: 'This uses only the y-difference (9 − 3 = 6, then miscounted) without dividing by the x-difference at all in a different combination.',
+      4: 'This is the rise (9 − 3 = 6) without dividing by the run (5 − 2 = 3) at all — slope requires both.',
+    },
     skill: 'Coordinate geometry',
+    domain: 'preparing-for-higher-math',
   },
   {
     id: 'math-6',
@@ -53,7 +88,14 @@ export const mathQuestions: Question[] = [
     choices: ['40°', '50°', '60°', '70°', '120°'],
     answerIndex: 2,
     explanation: 'Triangle angles sum to 180°: 180 − 50 − 70 = 60°.',
+    distractorRationale: {
+      0: 'This subtracts one angle twice by mistake (180 − 70 − 70) instead of subtracting each given angle once.',
+      1: 'This just repeats one of the given angles rather than solving 180 − 50 − 70.',
+      3: 'This just repeats the other given angle rather than solving for the missing one.',
+      4: 'This is 50 + 70, the sum of the two given angles — not the remaining angle needed to reach 180°.',
+    },
     skill: 'Geometry: triangles',
+    domain: 'preparing-for-higher-math',
   },
   {
     id: 'math-7',
@@ -62,7 +104,14 @@ export const mathQuestions: Question[] = [
     choices: ['x > 2', 'x > 7', 'x < 7', 'x > 14', 'x < 2'],
     answerIndex: 1,
     explanation: '2x − 5 > 9 → 2x > 14 → x > 7.',
+    distractorRationale: {
+      0: 'This divides 14 by 2 correctly to get 7, then appears to divide again by mistake, or mis-adds 5 and 9 as 4 instead of 14.',
+      2: 'This gets the correct boundary value (7) but flips the inequality direction without dividing by a negative — the direction only flips when multiplying/dividing by a negative number, which didn\'t happen here.',
+      3: 'This adds 5 and 9 incorrectly or forgets to divide by 2 after isolating 2x > 14.',
+      4: 'This has both the wrong boundary value and the flipped inequality direction.',
+    },
     skill: 'Inequalities',
+    domain: 'preparing-for-higher-math',
   },
   {
     id: 'math-8',
@@ -71,7 +120,14 @@ export const mathQuestions: Question[] = [
     choices: ['9', '10', '12', '14', '48'],
     answerIndex: 1,
     explanation: 'By the Pythagorean theorem, √(6² + 8²) = √(36 + 64) = √100 = 10.',
+    distractorRationale: {
+      0: 'This is not the result of √100 — double-check that 6² + 8² = 100 and √100 = 10 exactly.',
+      2: 'This just adds the two legs (6 + 8 = 14, miscounted as 12) rather than using the Pythagorean theorem.',
+      3: 'This adds the two legs directly (6 + 8 = 14) instead of using a² + b² = c².',
+      4: 'This is 6 × 8, the product of the legs (related to the triangle\'s area, doubled) — not the hypotenuse.',
+    },
     skill: 'Geometry: right triangles',
+    domain: 'preparing-for-higher-math',
   },
   {
     id: 'math-9',
@@ -80,7 +136,14 @@ export const mathQuestions: Question[] = [
     choices: ['1/3', '5/12', '5/9', '4/12', '1/4'],
     answerIndex: 1,
     explanation: 'There are 12 marbles total and 5 are blue, so P(blue) = 5/12.',
+    distractorRationale: {
+      0: 'This treats the three colors as equally likely (1 out of 3 colors) instead of counting individual marbles.',
+      2: 'This compares blue marbles (5) to non-blue marbles (9 = 4 + 5, miscounted) instead of to the total of 12.',
+      3: 'This uses the count of red marbles (4) instead of blue (5) in the numerator.',
+      4: 'This is close to 3/12 (green marbles over total) simplified incorrectly — recount which color and which total you need.',
+    },
     skill: 'Probability',
+    domain: 'integrating-essential-skills',
   },
   {
     id: 'math-10',
@@ -89,7 +152,14 @@ export const mathQuestions: Question[] = [
     choices: ['2⁷ = 128', '2¹² = 4096', '4⁷', '2⁷ = 64', '16'],
     answerIndex: 0,
     explanation: 'When multiplying like bases, add exponents: 2³ · 2⁴ = 2⁷ = 128.',
+    distractorRationale: {
+      1: 'This multiplies the exponents (3 × 4 = 12) instead of adding them. When multiplying same-base powers, exponents add, not multiply.',
+      2: 'This changes the base (2 → 4) instead of keeping the base the same and adding exponents.',
+      3: 'This correctly adds the exponents to get 2⁷ but miscalculates 2⁷ as 64 instead of 128 (that\'s 2⁶).',
+      4: 'This looks like 2⁴ alone, ignoring the 2³ factor entirely.',
+    },
     skill: 'Exponents',
+    domain: 'preparing-for-higher-math',
   },
   {
     id: 'math-11',
@@ -98,7 +168,14 @@ export const mathQuestions: Question[] = [
     choices: ['0', '1/2', '√2/2', '√3/2', '1'],
     answerIndex: 1,
     explanation: 'sin(30°) = 1/2 is a standard reference-angle value.',
+    distractorRationale: {
+      0: 'That\'s sin(0°), not sin(30°).',
+      2: 'That\'s sin(45°) — a commonly confused reference-angle value.',
+      3: 'That\'s cos(30°) (equivalently sin(60°)) — sine and cosine of complementary 30°/60° angles are easy to swap.',
+      4: 'That\'s sin(90°), the maximum value of sine, not sin(30°).',
+    },
     skill: 'Trigonometry',
+    domain: 'preparing-for-higher-math',
   },
   {
     id: 'math-12',
@@ -107,7 +184,14 @@ export const mathQuestions: Question[] = [
     choices: ['15.5', '16', '18', '20', '108'],
     answerIndex: 2,
     explanation: 'Sum = 108, and 108 / 6 = 18.',
+    distractorRationale: {
+      0: 'This is the median (average of the two middle values, 15 and 16), not the mean.',
+      1: 'This picks out one of the data values (16) rather than computing the average of all six.',
+      3: 'This divides 108 by 5 instead of by 6 — recount how many values are in the set.',
+      4: "This is the sum of all values, but the mean requires dividing that sum by the count (6) — you stopped one step early.",
+    },
     skill: 'Statistics',
+    domain: 'integrating-essential-skills',
   },
   {
     id: 'math-13',
@@ -116,7 +200,14 @@ export const mathQuestions: Question[] = [
     choices: ['8', '16', '20', '24', '48'],
     answerIndex: 3,
     explanation: 'Adding the equations gives 2x = 12, so x = 6, and y = 4. Then xy = 24.',
+    distractorRationale: {
+      0: 'This is x − y... times something else, or a subtraction of the correct x and y (6 − 4 = 2, not matching) — recompute x and y first, then multiply.',
+      1: 'This looks like 2 × x (2 × 8) with an incorrect x value — solve the system first: x = 6, y = 4.',
+      2: 'This is x + y (10) times 2, not x times y — make sure you\'re multiplying the two solved values, not combining the original equations.',
+      4: 'This would be 6 × 8, using an incorrect value for y — solving the system correctly gives y = 4, not 8.',
+    },
     skill: 'Systems of equations',
+    domain: 'preparing-for-higher-math',
   },
   {
     id: 'math-14',
@@ -125,7 +216,14 @@ export const mathQuestions: Question[] = [
     choices: ['4%', '16%', '25%', '40%', '60%'],
     answerIndex: 2,
     explanation: '40 / 160 = 0.25 = 25%.',
+    distractorRationale: {
+      0: 'This misplaces a decimal point — 40/160 = 0.25, not 0.04.',
+      1: 'This confuses the two numbers in the ratio, computing something closer to 160/40\'s reciprocal pattern rather than 40/160.',
+      3: 'This just restates the number 40 as "40%" without actually dividing by 160.',
+      4: 'This is 100% − 40%, not the result of dividing 40 by 160.',
+    },
     skill: 'Percentages',
+    domain: 'integrating-essential-skills',
   },
   {
     id: 'math-15',
@@ -134,6 +232,13 @@ export const mathQuestions: Question[] = [
     choices: ['−5', '−1', '1', '5', '6'],
     answerIndex: 3,
     explanation: 'Factoring gives (x − 2)(x − 3) = 0, so the roots are 2 and 3, and their sum is 5. (Or use −b/a = 5.)',
+    distractorRationale: {
+      0: 'This uses −b instead of the sum formula −b/a with the correct sign — for x² − 5x + 6, b = −5, so the sum of roots is −(−5) = 5, not −5.',
+      1: 'This is the difference of the roots (3 − 2 = 1) with a sign flip, not their sum.',
+      2: 'This is the difference of the two roots (3 − 2 = 1), not their sum (2 + 3 = 5).',
+      4: 'This is the constant term c (6), which equals the product of the roots (2 × 3 = 6), not their sum.',
+    },
     skill: 'Quadratics',
+    domain: 'preparing-for-higher-math',
   },
 ]

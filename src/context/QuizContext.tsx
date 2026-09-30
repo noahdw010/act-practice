@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import type { ReactNode } from 'react'
 import { buildQuizPlan } from '../lib/quizEngine'
 import type { QuizBlock } from '../lib/quizEngine'
+import { estimateScores } from '../lib/scoreEstimate'
 import { saveAttempt } from '../lib/storage'
 import type { AnsweredQuestion, AttemptRecord, Mode, Section, SectionResult } from '../types'
 
@@ -85,6 +86,7 @@ export function QuizProvider({ children }: { children: ReactNode }) {
           (sum, r) => sum + r.answered.reduce((s, a) => s + a.timeSpentSec, 0),
           0,
         )
+        const { sectionScores, compositeScore, stemScore, elaScore } = estimateScores(finalSectionResults)
         const attempt: AttemptRecord = {
           id: `${Date.now()}`,
           date: new Date().toISOString(),
@@ -95,6 +97,10 @@ export function QuizProvider({ children }: { children: ReactNode }) {
           total,
           percentage: total > 0 ? Math.round((correctCount / total) * 100) : 0,
           totalTimeSpentSec,
+          sectionScores,
+          compositeScore,
+          stemScore,
+          elaScore,
         }
         saveAttempt(attempt)
         return {

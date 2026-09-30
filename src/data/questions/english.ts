@@ -15,7 +15,14 @@ export const englishQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'The original is a dangling modifier — "walking to school" must describe a person, not the backpack. Choice B correctly attaches the modifier to "my."',
+    distractorRationale: {
+      0: 'Leaves the dangling modifier uncorrected — grammatically, "the backpack" is the one walking to school.',
+      2: 'Replaces one dangling construction with another — "it" still isn\'t the one walking to school.',
+      3: 'Now "my shoulders" are described as walking to school, which is just as illogical.',
+      4: 'This is needlessly passive and wordy, and still never names a person as the one walking to school.',
+    },
     skill: 'Modifiers',
+    domain: 'conventions-of-standard-english',
   },
   {
     id: 'eng-2',
@@ -24,7 +31,13 @@ export const englishQuestions: Question[] = [
     choices: ['NO CHANGE', 'whom has', 'who have', 'which has'],
     answerIndex: 2,
     explanation: '"Members" is plural, so the verb must agree: "who have," not "who has."',
+    distractorRationale: {
+      0: '"Has" is singular and disagrees with the plural subject "members."',
+      1: '"Whom" is an object pronoun used incorrectly as the subject of the verb, and "has" still disagrees with "members."',
+      3: '"Which" refers to things, not people — "committee members" calls for "who," and "has" still disagrees with the plural subject.',
+    },
     skill: 'Subject-verb agreement',
+    domain: 'conventions-of-standard-english',
   },
   {
     id: 'eng-3',
@@ -38,7 +51,13 @@ export const englishQuestions: Question[] = [
     ],
     answerIndex: 0,
     explanation: 'The sentence is already correctly punctuated as a simple series; no comma belongs before "at."',
+    distractorRationale: {
+      1: 'Inserts a comma that splits "and" from "bananas" for no grammatical reason.',
+      2: 'Adds an unnecessary comma that awkwardly separates "bananas" from where they were bought.',
+      3: 'Adds "too" with a comma — an unrequested change that doesn\'t fix any error in the original.',
+    },
     skill: 'Punctuation: commas',
+    domain: 'conventions-of-standard-english',
   },
   {
     id: 'eng-4',
@@ -47,7 +66,13 @@ export const englishQuestions: Question[] = [
     choices: ['NO CHANGE', "It's", "Its'", 'It is,'],
     answerIndex: 1,
     explanation: 'The sentence needs the contraction "It\'s" ("it is"), not the possessive "Its."',
+    distractorRationale: {
+      0: '"Its" is possessive ("belonging to it") and leaves the sentence without a verb — the sentence needs the contraction "it is."',
+      2: '"Its\'" isn\'t a standard English word; the apostrophe never goes after the s in "its" like this.',
+      3: 'This inserts an unnecessary comma that breaks the sentence\'s flow: "It is, important that..."',
+    },
     skill: 'Word choice: apostrophes',
+    domain: 'knowledge-of-language',
   },
   {
     id: 'eng-5',
@@ -61,7 +86,13 @@ export const englishQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'The parenthetical phrase "excited by her results" needs a comma on both sides to set it off from the main clause.',
+    distractorRationale: {
+      0: 'Missing the closing comma after "results," so the interrupting phrase isn\'t fully set off from the rest of the sentence.',
+      2: 'The comma is misplaced inside the phrase itself rather than framing the whole phrase.',
+      3: 'A semicolon joins two complete sentences — it doesn\'t belong in the middle of a descriptive phrase like this one.',
+    },
     skill: 'Punctuation: commas',
+    domain: 'conventions-of-standard-english',
   },
   {
     id: 'eng-6',
@@ -70,7 +101,13 @@ export const englishQuestions: Question[] = [
     choices: ['NO CHANGE', 'were', 'is', 'has been'],
     answerIndex: 1,
     explanation: 'With "neither...nor," the verb agrees with the nearer subject, "players" (plural), so "were" is correct.',
+    distractorRationale: {
+      0: '"Was" is singular, but "neither...nor" agrees with the nearer subject, "players," which is plural.',
+      2: '"Is" is both the wrong number (singular) and the wrong tense for this past-tense sentence.',
+      3: '"Has been" doesn\'t agree with the plural "players" and adds an unnecessary shift in tense.',
+    },
     skill: 'Subject-verb agreement',
+    domain: 'conventions-of-standard-english',
   },
   {
     id: 'eng-7',
@@ -80,11 +117,17 @@ export const englishQuestions: Question[] = [
       'NO CHANGE',
       'Maria felt amazing after a cold shower',
       'a cold shower to Maria felt amazing',
-      'Maria found a cold shower amazing',
+      'the shower, to Maria, felt amazing',
     ],
     answerIndex: 1,
-    explanation: 'The introductory phrase "after finishing the marathon" must modify the person who finished — Maria — not the shower.',
+    explanation: 'The introductory phrase "after finishing the marathon" must modify the person who finished — Maria — so she needs to be the subject of the main clause.',
+    distractorRationale: {
+      0: 'The subject of the main clause is still "a cold shower," which is illogically described as the one who finished the marathon.',
+      2: 'Reordering the words doesn\'t change the subject — "a cold shower" is still what the sentence says finished the marathon.',
+      3: 'The subject is still "the shower," not Maria, so the dangling modifier remains uncorrected.',
+    },
     skill: 'Modifiers',
+    domain: 'conventions-of-standard-english',
   },
   {
     id: 'eng-8',
@@ -98,7 +141,13 @@ export const englishQuestions: Question[] = [
     ],
     answerIndex: 0,
     explanation: 'The original correctly uses the Oxford comma to separate three items in a series.',
+    distractorRationale: {
+      1: 'Removing all the commas runs the three list items together with no separation.',
+      2: 'Adds a comma after "ancient," incorrectly separating the adjective from the noun it modifies.',
+      3: 'Misplaces the comma after "and" instead of before it, breaking the standard list format.',
+    },
     skill: 'Punctuation: commas',
+    domain: 'conventions-of-standard-english',
   },
   {
     id: 'eng-9',
@@ -107,7 +156,13 @@ export const englishQuestions: Question[] = [
     choices: ['NO CHANGE', 'therefore,', 'moreover,', 'for example,'],
     answerIndex: 0,
     explanation: '"However" correctly signals contrast between the game continuing and the crowd thinning — the other transitions don\'t fit logically.',
+    distractorRationale: {
+      1: '"Therefore" implies the crowd thinning was a direct result of the game continuing, but the sentence is drawing a contrast, not a cause-effect link.',
+      2: '"Moreover" signals that the second idea reinforces the first, but a thinning crowd contrasts with the game continuing, it doesn\'t support it.',
+      3: 'The thinning crowd isn\'t an example of the game continuing — it\'s a contrasting outcome, so "for example" doesn\'t fit.',
+    },
     skill: 'Transitions',
+    domain: 'production-of-writing',
   },
   {
     id: 'eng-10',
@@ -116,7 +171,13 @@ export const englishQuestions: Question[] = [
     choices: ['NO CHANGE', 'will finish', 'finished', 'have finished'],
     answerIndex: 0,
     explanation: 'The future perfect tense "will have finished" correctly describes an action completed before another future event ("by the time the guests arrive").',
+    distractorRationale: {
+      1: '"Will finish" (simple future) doesn\'t convey that the decorating will already be complete by the time the guests arrive.',
+      2: 'Past tense "finished" doesn\'t work for an action framed relative to a future event that hasn\'t happened yet.',
+      3: 'Present perfect "have finished" doesn\'t anchor the completion to the future arrival — it needs "will have" to point forward.',
+    },
     skill: 'Verb tense',
+    domain: 'conventions-of-standard-english',
   },
   {
     id: 'eng-11',
@@ -125,7 +186,13 @@ export const englishQuestions: Question[] = [
     choices: ['NO CHANGE', 'has', 'were having', 'are having'],
     answerIndex: 1,
     explanation: '"Each" is singular, so it takes the singular verb "has," not "have."',
+    distractorRationale: {
+      0: '"Have" is plural, but "each" (not "students") is the subject, and "each" is always singular.',
+      2: 'This shifts to an unnecessary progressive past tense and still doesn\'t agree with the singular "each."',
+      3: '"Are" is plural and disagrees with "each," which always takes a singular verb.',
+    },
     skill: 'Subject-verb agreement',
+    domain: 'conventions-of-standard-english',
   },
   {
     id: 'eng-12',
@@ -134,7 +201,13 @@ export const englishQuestions: Question[] = [
     choices: ['NO CHANGE', 'more long', 'longer', 'the longest'],
     answerIndex: 2,
     explanation: '"More longer" is a redundant double comparative; the correct comparative form is simply "longer."',
+    distractorRationale: {
+      0: '"More longer" doubles up the comparative — "long" only needs one comparative marker, either "more" or "-er," never both.',
+      1: 'One-syllable adjectives like "long" take the "-er" ending for the comparative, not "more."',
+      3: '"The longest" is a superlative, used when comparing three or more things, but this sentence only compares the report to one expectation.',
+    },
     skill: 'Comparatives',
+    domain: 'conventions-of-standard-english',
   },
   {
     id: 'eng-13',
@@ -143,7 +216,13 @@ export const englishQuestions: Question[] = [
     choices: ['NO CHANGE', 'Being as', 'Because', 'Due to the fact of'],
     answerIndex: 2,
     explanation: '"Because" is the concise, standard way to express causation; "being that" and "due to the fact of" are wordy and non-standard.',
+    distractorRationale: {
+      0: '"Being that" is a nonstandard, wordy substitute for "because."',
+      1: '"Being as" is also nonstandard and unnecessarily wordy for expressing cause.',
+      3: '"Due to the fact of" is excessively wordy where a single concise word does the same job.',
+    },
     skill: 'Conciseness',
+    domain: 'knowledge-of-language',
   },
   {
     id: 'eng-14',
@@ -152,7 +231,13 @@ export const englishQuestions: Question[] = [
     choices: ['NO CHANGE', 'their own mother cant', "their own mother can't", 'their own mothers can not'],
     answerIndex: 2,
     explanation: '"Can\'t" is the standard contraction of "cannot"; "cant" is missing the apostrophe and is a different word entirely.',
+    distractorRationale: {
+      0: 'Writing "can not" as two separate words is nonstandard here — the contraction "can\'t" is the conventional form.',
+      1: '"Cant" without an apostrophe is a different, unrelated word (meaning insincere talk), not the contraction of "cannot."',
+      3: 'This incorrectly pluralizes "mother" to "mothers," which no longer matches — the twins share one mother.',
+    },
     skill: 'Word choice: apostrophes',
+    domain: 'knowledge-of-language',
   },
   {
     id: 'eng-15',
@@ -160,12 +245,18 @@ export const englishQuestions: Question[] = [
     prompt: 'The new policy, [which was announced yesterday], affects all employees.',
     choices: [
       'NO CHANGE',
-      'which was announced yesterday',
+      'which was announced, yesterday',
       'announced yesterday,',
       'that was announced yesterday',
     ],
     answerIndex: 0,
     explanation: 'The nonrestrictive clause "which was announced yesterday" is correctly set off by commas on both sides.',
+    distractorRationale: {
+      1: 'Inserts a comma awkwardly inside the clause itself, splitting "announced" from "yesterday" for no reason.',
+      2: 'Dropping "which was" reduces the clause in a way that reads as a fragment tacked onto the sentence.',
+      3: '"That" introduces a restrictive clause (implying other policies weren\'t announced yesterday), but the commas show this is extra, nonrestrictive detail — "which" is correct here, not "that."',
+    },
     skill: 'Punctuation: commas',
+    domain: 'conventions-of-standard-english',
   },
 ]

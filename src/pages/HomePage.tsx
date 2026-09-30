@@ -36,9 +36,14 @@ export function HomePage() {
     <div className="mx-auto max-w-3xl px-6 py-10">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold text-slate-100">ACT Practice</h1>
-        <Link to="/history" className="text-sm text-blue-400 hover:text-blue-300">
-          Progress history →
-        </Link>
+        <div className="flex gap-4 text-sm">
+          <Link to="/about" className="text-blue-400 hover:text-blue-300">
+            About these questions
+          </Link>
+          <Link to="/history" className="text-blue-400 hover:text-blue-300">
+            Progress history →
+          </Link>
+        </div>
       </div>
       <p className="mt-2 text-slate-400">Pick a mode and start practicing. Your results are saved locally.</p>
 

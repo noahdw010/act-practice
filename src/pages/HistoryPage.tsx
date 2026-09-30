@@ -55,22 +55,36 @@ export function HistoryPage() {
           <ProgressChart attempts={attempts} />
 
           <div className="mt-6 flex flex-col gap-2">
-            {attempts.map((a) => (
-              <div
-                key={a.id}
-                className="flex items-center justify-between rounded-lg border border-slate-700 bg-slate-800/20 px-4 py-3"
-              >
-                <div>
-                  <div className="text-sm font-medium text-slate-200">
-                    {MODE_LABEL[a.mode]} · {a.sections.map((s) => SECTION_META[s].label).join(', ')}
+            {attempts.map((a) => {
+              const estimateLabel =
+                a.compositeScore != null
+                  ? `Est. Composite ${a.compositeScore}/36`
+                  : a.sections
+                      .map((s) => {
+                        const score = a.sectionScores?.[s]
+                        return score !== undefined ? `Est. ${score}/36 (${SECTION_META[s].label})` : null
+                      })
+                      .filter(Boolean)
+                      .join(' · ')
+
+              return (
+                <div
+                  key={a.id}
+                  className="flex items-center justify-between rounded-lg border border-slate-700 bg-slate-800/20 px-4 py-3"
+                >
+                  <div>
+                    <div className="text-sm font-medium text-slate-200">
+                      {MODE_LABEL[a.mode]} · {a.sections.map((s) => SECTION_META[s].label).join(', ')}
+                    </div>
+                    <div className="text-xs text-slate-500">
+                      {new Date(a.date).toLocaleString()} · {formatTime(a.totalTimeSpentSec)}
+                    </div>
+                    {estimateLabel && <div className="mt-0.5 text-xs text-blue-400">{estimateLabel}</div>}
                   </div>
-                  <div className="text-xs text-slate-500">
-                    {new Date(a.date).toLocaleString()} · {formatTime(a.totalTimeSpentSec)}
-                  </div>
+                  <div className="text-lg font-semibold text-slate-100">{a.percentage}%</div>
                 </div>
-                <div className="text-lg font-semibold text-slate-100">{a.percentage}%</div>
-              </div>
-            ))}
+              )
+            })}
           </div>
 
           <button

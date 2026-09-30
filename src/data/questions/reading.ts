@@ -15,7 +15,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'The passage states Elena had worked there every summer since age eight, but "this was the first year he let her touch the delicate escapement mechanisms herself."',
+    distractorRationale: {
+      0: 'The passage says she\'s worked there every summer since age eight — this isn\'t her first summer in the shop, just the first with this particular privilege.',
+      2: 'The passage never says she restored the whole clock alone — her grandfather is still leading the restoration; she worked on the escapement.',
+      3: 'The passage says she "had heard him say this before" — it\'s the words landing differently that\'s new, not hearing them for the first time.',
+    },
     skill: 'Detail',
+    domain: 'key-ideas-and-details',
   },
   {
     id: 'read-2',
@@ -30,7 +36,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 2,
     explanation: 'The image follows directly from the description of sunlight catching the gears, and is a visual/figurative description rather than a literal claim about astronomy or organization.',
+    distractorRationale: {
+      0: 'The comparison is about visual imagery, not a claim about how organized or disorganized the shop is.',
+      1: 'The image is figurative — it\'s not a literal statement connecting the shop to astronomy.',
+      3: 'The gears are compared to moons because of how the light catches them, not as a warning sign; nothing in the passage suggests she is about to fail.',
+    },
     skill: 'Figurative language',
+    domain: 'craft-and-structure',
   },
   {
     id: 'read-3',
@@ -45,7 +57,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'This line, paired with "it only responds to precision," conveys that skill and care matter more than mere desire for success.',
+    distractorRationale: {
+      0: 'The line isn\'t comparing the importance of clocks to people\'s feelings — it\'s about what actually makes a clock work.',
+      2: 'The grandfather is teaching her a principle, not telling her to quit; the tone is instructive, not discouraging.',
+      3: 'Nothing in the passage suggests the shop is dangerous — the statement is about precision and craftsmanship.',
+    },
     skill: 'Main idea / inference',
+    domain: 'key-ideas-and-details',
   },
   {
     id: 'read-4',
@@ -55,7 +73,13 @@ export const readingQuestions: Question[] = [
     choices: ['bored', 'anxious', 'angry', 'indifferent'],
     answerIndex: 1,
     explanation: 'She "realized she had been holding her breath," which indicates tension and anxiety about whether she would succeed.',
+    distractorRationale: {
+      0: 'Holding her breath in anticipation is a sign of tension, not boredom.',
+      2: 'Nothing in the passage suggests anger — her reaction reflects nervous anticipation, not frustration.',
+      3: 'If she were indifferent, she wouldn\'t have been holding her breath waiting to see the outcome.',
+    },
     skill: 'Inference',
+    domain: 'key-ideas-and-details',
   },
   {
     id: 'read-5',
@@ -70,7 +94,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'The passage says the smile "meant more than any compliment he could have spoken aloud," indicating genuine, understated pride.',
+    distractorRationale: {
+      0: 'The passage describes the smile as meaning more than any spoken compliment — that reads as warm and genuine, not reluctant.',
+      2: 'There\'s no mistake to be amused by in the passage — Elena succeeds.',
+      3: 'The passage never questions the clock\'s value, and the smile is tied to her success, not relief about the clock itself.',
+    },
     skill: 'Inference / tone',
+    domain: 'craft-and-structure',
   },
   // Passage 2: Company Town
   {
@@ -86,7 +116,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'The passage states this happened "often in remote areas where no existing community could supply the necessary labor force."',
+    distractorRationale: {
+      0: 'The passage doesn\'t say workers demanded this — it frames company towns as a solution companies created to a labor-supply problem.',
+      2: 'The passage doesn\'t mention any government requirement behind building these towns.',
+      3: 'The passage centers on the lack of an existing local workforce, not on avoiding competitive wages.',
+    },
     skill: 'Detail',
+    domain: 'key-ideas-and-details',
   },
   {
     id: 'read-7',
@@ -101,7 +137,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'The passage explicitly describes scrip as "a currency redeemable only at company-owned stores."',
+    distractorRationale: {
+      0: 'The passage says the opposite — scrip could be redeemed only at company-owned stores, not any local store.',
+      2: 'The passage never claims scrip was worth more than regular currency; the issue was its limited redemption, not its value.',
+      3: 'The passage doesn\'t mention scrip being outlawed — it explains how it bound workers economically.',
+    },
     skill: 'Detail',
+    domain: 'key-ideas-and-details',
   },
   {
     id: 'read-8',
@@ -116,7 +158,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'The sentence goes on to list both a benefit (better housing, rapid growth) and a harm (conditions for exploitation), matching a "double-edged" characterization.',
+    distractorRationale: {
+      0: 'The passage says historians view company towns as mixed, both enabling growth and creating risks — not universally condemned.',
+      2: 'The passage never connects company towns to military strategy.',
+      3: 'Whether company towns still exist isn\'t what "double-edged" refers to — it refers to their having both good and bad effects.',
+    },
     skill: 'Vocabulary in context',
+    domain: 'craft-and-structure',
   },
   {
     id: 'read-9',
@@ -131,7 +179,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 0,
     explanation: 'The passage states that "because the company owned the housing... workers who went on strike risked losing not only their jobs but their homes as well."',
+    distractorRationale: {
+      1: 'The passage names company ownership of housing as the cause, not any action by banks.',
+      2: 'The passage doesn\'t mention government seizure of property.',
+      3: 'The passage doesn\'t discuss rising rents during strikes — the company\'s outright ownership of the housing is the stated reason.',
+    },
     skill: 'Cause and effect',
+    domain: 'key-ideas-and-details',
   },
   {
     id: 'read-10',
@@ -146,7 +200,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'The final sentence specifies "the ordinary checks of a competitive housing or retail market simply did not exist within town limits."',
+    distractorRationale: {
+      0: 'Police oversight isn\'t discussed anywhere in the passage — the missing checks are specifically about market competition.',
+      2: 'Federal labor laws aren\'t mentioned; the sentence is about the absence of competing housing and retail options.',
+      3: 'Newspaper reporting isn\'t named as one of the "ordinary checks" referenced in the passage.',
+    },
     skill: 'Inference',
+    domain: 'integration-of-knowledge-and-ideas',
   },
   // Passage 3: Coral Bleaching
   {
@@ -162,7 +222,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'The passage states the algae "supply the coral with the majority of its energy through the sugars they produce."',
+    distractorRationale: {
+      0: 'Predator protection isn\'t mentioned as the algae\'s contribution — the passage emphasizes energy from photosynthesis.',
+      2: 'The white skeleton is what\'s revealed after bleaching, not something the algae supply to the coral.',
+      3: 'Disease resistance isn\'t described as a direct benefit — losing the algae is what makes coral more vulnerable to disease.',
+    },
     skill: 'Detail',
+    domain: 'key-ideas-and-details',
   },
   {
     id: 'read-12',
@@ -177,7 +243,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 0,
     explanation: 'The passage states that heat-stressed coral "expels its algae, causing the coral to lose its color," which is bleaching.',
+    distractorRationale: {
+      1: 'The passage describes the coral expelling the algae due to heat stress, not the algae attacking the coral.',
+      2: 'The passage says bleaching is not necessarily permanent — coral can recover if temperatures normalize quickly.',
+      3: 'Pollution from ships is never mentioned in the passage as a cause of bleaching.',
+    },
     skill: 'Cause and effect',
+    domain: 'key-ideas-and-details',
   },
   {
     id: 'read-13',
@@ -192,7 +264,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'The passage says bleached coral "is not immediately dead" and "can recruit new algae and recover" if temperatures return to normal quickly enough.',
+    distractorRationale: {
+      0: 'The passage explicitly says bleached coral "is not immediately dead."',
+      2: 'The passage doesn\'t describe skeleton regrowth — the skeleton was already there, just revealed; recovery means regaining algae.',
+      3: 'The passage says prolonged heat stress leaves coral "far more vulnerable" to further damage, the opposite of unaffected.',
+    },
     skill: 'Detail',
+    domain: 'integration-of-knowledge-and-ideas',
   },
   {
     id: 'read-14',
@@ -207,7 +285,13 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 0,
     explanation: 'The passage notes bleaching events "are triggered by temperature anomalies as small as one or two degrees Celsius," making reefs sensitive to small changes.',
+    distractorRationale: {
+      1: 'Reef distribution isn\'t why the passage calls them sensitive indicators — sensitivity refers to how small a temperature change can trigger bleaching.',
+      2: 'Ease of study is never mentioned as a reason reefs are considered sensitive indicators.',
+      3: 'The passage says the opposite — heat stress is exactly what drives algae out of the coral, so algae are clearly not immune to it.',
+    },
     skill: 'Cause and effect',
+    domain: 'integration-of-knowledge-and-ideas',
   },
   {
     id: 'read-15',
@@ -222,6 +306,12 @@ export const readingQuestions: Question[] = [
     ],
     answerIndex: 1,
     explanation: 'Paragraph one explains the normal coral-algae relationship; paragraphs two and three explain what happens to that relationship under heat stress.',
+    distractorRationale: {
+      0: 'The passage isn\'t organized as a historical timeline with predictions — it explains a biological relationship and what disrupts it.',
+      2: 'The passage discusses coral reefs and bleaching in general, never zooming in on one specific reef or out to a global survey.',
+      3: 'The passage doesn\'t critique scientific methods — it explains an ecological relationship and the process that disrupts it.',
+    },
     skill: 'Structure',
+    domain: 'craft-and-structure',
   },
 ]

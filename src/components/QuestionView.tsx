@@ -56,11 +56,32 @@ export function QuestionView() {
         </div>
 
         {showFeedback && (
-          <div className="mt-4 rounded-lg border border-slate-700 bg-slate-800/60 p-4 text-sm text-slate-300">
-            <p className="mb-1 font-semibold text-slate-100">
-              {selectedIndex === currentQuestion.answerIndex ? 'Correct!' : 'Not quite.'}
-            </p>
-            <p>{currentQuestion.explanation}</p>
+          <div className="mt-4 flex flex-col gap-3">
+            <div
+              className={`rounded-lg border p-4 text-sm ${
+                selectedIndex === currentQuestion.answerIndex
+                  ? 'border-green-800 bg-green-950/40 text-green-100'
+                  : 'border-red-800 bg-red-950/40 text-red-100'
+              }`}
+            >
+              <p className="mb-1 font-semibold">
+                {selectedIndex === currentQuestion.answerIndex ? 'Correct!' : 'Not quite.'}
+              </p>
+              {selectedIndex !== null &&
+                selectedIndex !== currentQuestion.answerIndex &&
+                currentQuestion.distractorRationale?.[selectedIndex] && (
+                  <p>
+                    Why {String.fromCharCode(65 + selectedIndex)} is wrong:{' '}
+                    {currentQuestion.distractorRationale[selectedIndex]}
+                  </p>
+                )}
+            </div>
+            <div className="rounded-lg border border-slate-700 bg-slate-800/60 p-4 text-sm text-slate-300">
+              <p className="mb-1 font-semibold text-slate-100">
+                Why {String.fromCharCode(65 + currentQuestion.answerIndex)} is correct
+              </p>
+              <p>{currentQuestion.explanation}</p>
+            </div>
           </div>
         )}
 
