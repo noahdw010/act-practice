@@ -5,10 +5,11 @@ import { QuizPage } from './pages/QuizPage'
 import { ResultsPage } from './pages/ResultsPage'
 import { HistoryPage } from './pages/HistoryPage'
 import { AboutPage } from './pages/AboutPage'
+import { MasteryPage } from './pages/MasteryPage'
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100">
+    <div className="min-h-screen bg-slate-50 text-slate-900">
       <QuizProvider>
         <HashRouter>
           <Routes>
@@ -17,6 +18,7 @@ function App() {
             <Route path="/results" element={<ResultsPage />} />
             <Route path="/history" element={<HistoryPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/mastery" element={<MasteryPage />} />
           </Routes>
         </HashRouter>
       </QuizProvider>

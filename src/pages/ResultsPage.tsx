@@ -6,7 +6,7 @@ import type { Section } from '../types'
 
 function ScoreBadge({ score }: { score: number }) {
   return (
-    <span className="rounded-full border border-blue-800 bg-blue-950/60 px-2.5 py-0.5 text-xs font-semibold text-blue-200">
+    <span className="rounded-full border border-blue-200 bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700">
       Est. {score}/36
     </span>
   )
@@ -19,15 +19,15 @@ export function ResultsPage() {
   if (!completedAttempt) {
     return (
       <div className="mx-auto max-w-2xl px-6 py-16 text-center">
-        <h1 className="text-2xl font-bold text-slate-100">No recent result</h1>
-        <p className="mt-2 text-slate-400">Start a practice session to see your results here.</p>
+        <h1 className="text-2xl font-bold text-slate-900">No recent result</h1>
+        <p className="mt-2 text-slate-500">Start a practice session to see your results here.</p>
         <div className="mt-6 flex justify-center gap-3">
-          <Link to="/" className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white hover:bg-blue-500">
+          <Link to="/" className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white hover:bg-blue-700">
             Go home
           </Link>
           <Link
             to="/history"
-            className="rounded-lg border border-slate-700 px-5 py-2 text-sm font-semibold text-slate-300 hover:border-slate-500"
+            className="rounded-lg border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-600 hover:border-slate-400"
           >
             View history
           </Link>
@@ -54,25 +54,25 @@ export function ResultsPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
-      <h1 className="text-2xl font-bold text-slate-100">Results</h1>
+      <h1 className="text-2xl font-bold text-slate-900">Results</h1>
 
-      <div className="mt-6 rounded-2xl border border-slate-700 bg-slate-800/40 p-6 text-center">
-        <div className="text-5xl font-bold text-slate-100">{completedAttempt.percentage}%</div>
-        <div className="mt-1 text-slate-400">
+      <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm">
+        <div className="text-5xl font-bold text-slate-900">{completedAttempt.percentage}%</div>
+        <div className="mt-1 text-slate-500">
           {completedAttempt.correctCount} / {completedAttempt.total} correct · {formatTime(completedAttempt.totalTimeSpentSec)} spent
         </div>
 
         {completedAttempt.compositeScore !== null && (
-          <div className="mt-4 inline-block rounded-xl border border-blue-800 bg-blue-950/50 px-5 py-2">
-            <div className="text-3xl font-bold text-blue-100">{completedAttempt.compositeScore}</div>
-            <div className="text-xs text-blue-300">Estimated Composite (1–36)</div>
+          <div className="mt-4 inline-block rounded-xl border border-blue-200 bg-blue-50 px-5 py-2">
+            <div className="text-3xl font-bold text-blue-700">{completedAttempt.compositeScore}</div>
+            <div className="text-xs text-blue-600">Estimated Composite (1–36)</div>
           </div>
         )}
       </div>
 
       <div className="mt-2 text-center text-xs text-slate-500">
         Estimated ACT scores are a rough approximation from this session's accuracy — not an official score.{' '}
-        <Link to="/about" className="text-blue-400 hover:text-blue-300">
+        <Link to="/about" className="text-blue-600 hover:text-blue-700">
           How is this estimated / how are questions sourced?
         </Link>
       </div>
@@ -83,12 +83,12 @@ export function ResultsPage() {
           if (!r) return null
           const score = completedAttempt.sectionScores[s]
           return (
-            <div key={s} className="rounded-xl border border-slate-700 bg-slate-800/30 p-4">
+            <div key={s} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
               <div className="flex items-center justify-between">
-                <div className="font-semibold text-slate-100">{SECTION_META[s].label}</div>
+                <div className="font-semibold text-slate-900">{SECTION_META[s].label}</div>
                 {score !== undefined && <ScoreBadge score={score} />}
               </div>
-              <div className="mt-1 text-sm text-slate-400">
+              <div className="mt-1 text-sm text-slate-500">
                 {r.correctCount} / {r.total} correct ({r.total > 0 ? Math.round((r.correctCount / r.total) * 100) : 0}%)
               </div>
             </div>
@@ -105,32 +105,37 @@ export function ResultsPage() {
 
       {weakAreas.length > 0 && (
         <div className="mt-8">
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500">
             Focus areas to improve next
           </h2>
           <div className="flex flex-wrap gap-2">
             {weakAreas.map(([skill, count]) => (
               <span
                 key={skill}
-                className="rounded-full border border-amber-800 bg-amber-950/40 px-3 py-1 text-xs text-amber-200"
+                className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs text-amber-800"
               >
                 {skill} · missed {count}
               </span>
             ))}
           </div>
+          <p className="mt-2 text-xs text-slate-500">
+            <Link to="/mastery" className="text-blue-600 hover:text-blue-700">
+              See how these trend across all your sessions →
+            </Link>
+          </p>
         </div>
       )}
 
       {missed.length > 0 && (
         <div className="mt-8">
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">Review missed questions</h2>
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500">Review missed questions</h2>
           <div className="flex flex-col gap-4">
             {missed.map((m) => (
-              <div key={m.question.id} className="rounded-xl border border-slate-700 bg-slate-800/30 p-4">
+              <div key={m.question.id} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
                 <div className="mb-1 text-xs font-medium uppercase tracking-wide text-slate-500">
                   {SECTION_META[m.section as Section].label} · {m.question.skill}
                 </div>
-                <p className="mb-2 text-sm text-slate-200">{m.question.prompt}</p>
+                <p className="mb-2 text-sm text-slate-800">{m.question.prompt}</p>
 
                 <div className="flex flex-col gap-1 text-sm">
                   {m.question.choices.map((choice, idx) => {
@@ -140,7 +145,7 @@ export function ResultsPage() {
                     return (
                       <p
                         key={idx}
-                        className={isCorrect ? 'text-green-400' : 'text-red-400'}
+                        className={isCorrect ? 'text-green-700' : 'text-red-700'}
                       >
                         <span className="font-semibold">
                           {String.fromCharCode(65 + idx)}. {choice}
@@ -149,23 +154,23 @@ export function ResultsPage() {
                       </p>
                     )
                   })}
-                  {m.selectedIndex === null && <p className="text-slate-500 italic">You didn't answer this one in time.</p>}
+                  {m.selectedIndex === null && <p className="italic text-slate-500">You didn't answer this one in time.</p>}
                 </div>
 
-                <div className="mt-3 rounded-lg bg-slate-900/50 p-3 text-sm text-slate-300">
-                  <p className="mb-1 font-semibold text-slate-100">
+                <div className="mt-3 rounded-lg bg-slate-50 p-3 text-sm text-slate-700">
+                  <p className="mb-1 font-semibold text-slate-900">
                     Why {String.fromCharCode(65 + m.question.answerIndex)} is correct
                   </p>
                   <p>{m.question.explanation}</p>
                 </div>
 
                 {m.question.distractorRationale && Object.keys(m.question.distractorRationale).length > 0 && (
-                  <div className="mt-2 rounded-lg bg-slate-900/50 p-3 text-sm text-slate-300">
-                    <p className="mb-1 font-semibold text-slate-100">Why the other choices are wrong</p>
+                  <div className="mt-2 rounded-lg bg-slate-50 p-3 text-sm text-slate-700">
+                    <p className="mb-1 font-semibold text-slate-900">Why the other choices are wrong</p>
                     <ul className="flex flex-col gap-1">
                       {Object.entries(m.question.distractorRationale).map(([idx, note]) => (
                         <li key={idx}>
-                          <span className="font-semibold text-slate-200">{String.fromCharCode(65 + Number(idx))}.</span>{' '}
+                          <span className="font-semibold text-slate-800">{String.fromCharCode(65 + Number(idx))}.</span>{' '}
                           {note}
                         </li>
                       ))}
@@ -178,16 +183,22 @@ export function ResultsPage() {
         </div>
       )}
 
-      <div className="mt-8 flex gap-3">
+      <div className="mt-8 flex flex-wrap gap-3">
         <button
           onClick={() => navigate('/')}
-          className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white hover:bg-blue-500"
+          className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white hover:bg-blue-700"
         >
           Practice again
         </button>
         <Link
+          to="/mastery"
+          className="rounded-lg border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-600 hover:border-slate-400"
+        >
+          Skill mastery
+        </Link>
+        <Link
           to="/history"
-          className="rounded-lg border border-slate-700 px-5 py-2 text-sm font-semibold text-slate-300 hover:border-slate-500"
+          className="rounded-lg border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-600 hover:border-slate-400"
         >
           View history
         </Link>

@@ -32,7 +32,7 @@ export function QuizPage() {
           <div className="text-xs font-medium uppercase tracking-wide text-slate-500">
             {plan.mode === 'full' ? `Section ${blockNumber} of ${plan.blocks.length}` : 'Practice session'}
           </div>
-          <h1 className="text-xl font-bold text-slate-100">{SECTION_META[currentBlock.section].label}</h1>
+          <h1 className="text-xl font-bold text-slate-900">{SECTION_META[currentBlock.section].label}</h1>
         </div>
         <div className="flex items-center gap-3">
           <Timer remainingSec={remainingSec} />
@@ -41,7 +41,7 @@ export function QuizPage() {
               abandonQuiz()
               navigate('/')
             }}
-            className="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-400 hover:border-slate-500 hover:text-slate-200"
+            className="rounded-full border border-slate-300 px-3 py-1 text-xs text-slate-500 hover:border-slate-400 hover:text-slate-700"
           >
             Quit
           </button>

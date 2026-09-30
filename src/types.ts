@@ -2,6 +2,11 @@ export type Section = 'english' | 'math' | 'reading' | 'science'
 
 export type Mode = 'practice' | 'timed' | 'full'
 
+export type Difficulty = 'easy' | 'medium' | 'hard'
+
+/** Which difficulty tier(s) a session pulls questions from. 'mixed' uses the full bank, unfiltered (realistic ACT spread). */
+export type DifficultyFilter = 'easy' | 'medium' | 'hard' | 'mixed'
+
 export interface DataTable {
   headers: string[]
   rows: string[][]
@@ -28,6 +33,7 @@ export interface Question {
   skill: string
   /** Official ACT content-domain id this question is aligned to. See `src/data/contentDomains.ts`. */
   domain: string
+  difficulty: Difficulty
 }
 
 export interface SectionMeta {

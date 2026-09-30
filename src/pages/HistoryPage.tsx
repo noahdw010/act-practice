@@ -25,29 +25,34 @@ export function HistoryPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-slate-100">Progress History</h1>
-        <Link to="/" className="text-sm text-blue-400 hover:text-blue-300">
-          ← Back home
-        </Link>
+        <h1 className="text-2xl font-bold text-slate-900">Progress History</h1>
+        <div className="flex gap-4 text-sm">
+          <Link to="/mastery" className="text-blue-600 hover:text-blue-700">
+            Skill mastery
+          </Link>
+          <Link to="/" className="text-blue-600 hover:text-blue-700">
+            ← Back home
+          </Link>
+        </div>
       </div>
 
       {attempts.length === 0 ? (
-        <div className="rounded-xl border border-slate-700 bg-slate-800/30 p-8 text-center text-slate-400">
+        <div className="rounded-xl border border-slate-200 bg-white p-8 text-center text-slate-500 shadow-sm">
           No practice sessions yet. Complete one to start tracking your progress.
         </div>
       ) : (
         <>
           <div className="mb-6 grid grid-cols-3 gap-3">
-            <div className="rounded-xl border border-slate-700 bg-slate-800/30 p-4 text-center">
-              <div className="text-2xl font-bold text-slate-100">{attempts.length}</div>
+            <div className="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm">
+              <div className="text-2xl font-bold text-slate-900">{attempts.length}</div>
               <div className="text-xs text-slate-500">Sessions</div>
             </div>
-            <div className="rounded-xl border border-slate-700 bg-slate-800/30 p-4 text-center">
-              <div className="text-2xl font-bold text-slate-100">{avg}%</div>
+            <div className="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm">
+              <div className="text-2xl font-bold text-slate-900">{avg}%</div>
               <div className="text-xs text-slate-500">Average score</div>
             </div>
-            <div className="rounded-xl border border-slate-700 bg-slate-800/30 p-4 text-center">
-              <div className="text-2xl font-bold text-slate-100">{best}%</div>
+            <div className="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm">
+              <div className="text-2xl font-bold text-slate-900">{best}%</div>
               <div className="text-xs text-slate-500">Best score</div>
             </div>
           </div>
@@ -70,18 +75,18 @@ export function HistoryPage() {
               return (
                 <div
                   key={a.id}
-                  className="flex items-center justify-between rounded-lg border border-slate-700 bg-slate-800/20 px-4 py-3"
+                  className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-4 py-3 shadow-sm"
                 >
                   <div>
-                    <div className="text-sm font-medium text-slate-200">
+                    <div className="text-sm font-medium text-slate-800">
                       {MODE_LABEL[a.mode]} · {a.sections.map((s) => SECTION_META[s].label).join(', ')}
                     </div>
                     <div className="text-xs text-slate-500">
                       {new Date(a.date).toLocaleString()} · {formatTime(a.totalTimeSpentSec)}
                     </div>
-                    {estimateLabel && <div className="mt-0.5 text-xs text-blue-400">{estimateLabel}</div>}
+                    {estimateLabel && <div className="mt-0.5 text-xs text-blue-600">{estimateLabel}</div>}
                   </div>
-                  <div className="text-lg font-semibold text-slate-100">{a.percentage}%</div>
+                  <div className="text-lg font-semibold text-slate-900">{a.percentage}%</div>
                 </div>
               )
             })}
@@ -89,7 +94,7 @@ export function HistoryPage() {
 
           <button
             onClick={handleClear}
-            className="mt-8 text-xs text-slate-500 underline hover:text-red-400"
+            className="mt-8 text-xs text-slate-500 underline hover:text-red-600"
           >
             Clear history
           </button>

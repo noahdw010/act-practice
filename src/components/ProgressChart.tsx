@@ -16,7 +16,7 @@ export function ProgressChart({ attempts }: { attempts: AttemptRecord[] }) {
 
   if (ordered.length < 2) {
     return (
-      <div className="flex h-40 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/30 text-sm text-slate-500">
+      <div className="flex h-40 items-center justify-center rounded-xl border border-slate-200 bg-white text-sm text-slate-500 shadow-sm">
         Complete at least two practice sessions to see your trend.
       </div>
     )
@@ -36,7 +36,7 @@ export function ProgressChart({ attempts }: { attempts: AttemptRecord[] }) {
   const hovered = hoverIdx !== null ? points[hoverIdx] : null
 
   return (
-    <div className="relative rounded-xl border border-slate-700 bg-slate-800/30 p-4">
+    <div className="relative rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
       <svg
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         className="w-full"
@@ -52,16 +52,16 @@ export function ProgressChart({ attempts }: { attempts: AttemptRecord[] }) {
               y1={yFor(g)}
               y2={yFor(g)}
               stroke="currentColor"
-              className="text-slate-700"
+              className="text-slate-200"
               strokeWidth={1}
             />
-            <text x={PAD_L - 8} y={yFor(g) + 3} textAnchor="end" className="fill-slate-500 text-[10px]">
+            <text x={PAD_L - 8} y={yFor(g) + 3} textAnchor="end" className="fill-slate-400 text-[10px]">
               {g}%
             </text>
           </g>
         ))}
 
-        <path d={path} fill="none" stroke="#3b82f6" strokeWidth={2} strokeLinecap="round" />
+        <path d={path} fill="none" stroke="#2563eb" strokeWidth={2} strokeLinecap="round" />
 
         {points.map((p, i) => (
           <g key={i}>
@@ -69,8 +69,8 @@ export function ProgressChart({ attempts }: { attempts: AttemptRecord[] }) {
               cx={p.x}
               cy={p.y}
               r={hoverIdx === i ? 6 : 4}
-              fill="#3b82f6"
-              stroke="#0f172a"
+              fill="#2563eb"
+              stroke="#ffffff"
               strokeWidth={2}
               onMouseEnter={() => setHoverIdx(i)}
             />
@@ -88,7 +88,7 @@ export function ProgressChart({ attempts }: { attempts: AttemptRecord[] }) {
 
       {hovered && (
         <div
-          className="pointer-events-none absolute rounded-lg border border-slate-600 bg-slate-900 px-3 py-2 text-xs text-slate-200 shadow-lg"
+          className="pointer-events-none absolute rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-slate-800 shadow-md"
           style={{
             left: `${(hovered.x / WIDTH) * 100}%`,
             top: 0,
@@ -96,7 +96,7 @@ export function ProgressChart({ attempts }: { attempts: AttemptRecord[] }) {
           }}
         >
           <div className="font-semibold">{hovered.attempt.percentage}%</div>
-          <div className="text-slate-400">{new Date(hovered.attempt.date).toLocaleDateString()}</div>
+          <div className="text-slate-500">{new Date(hovered.attempt.date).toLocaleDateString()}</div>
         </div>
       )}
     </div>

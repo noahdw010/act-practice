@@ -1,6 +1,7 @@
 import type { Question } from '../../types'
 
-// Each prompt contains the underlined portion in brackets. Choice 0 is always "NO CHANGE".
+// Each prompt contains the underlined portion in brackets. Choice 0 is always "NO CHANGE"
+// (except for a few "which sentence should be added/deleted" style items, which have no NO CHANGE).
 export const englishQuestions: Question[] = [
   {
     id: 'eng-1',
@@ -23,6 +24,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Modifiers',
     domain: 'conventions-of-standard-english',
+    difficulty: 'easy',
   },
   {
     id: 'eng-2',
@@ -38,6 +40,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Subject-verb agreement',
     domain: 'conventions-of-standard-english',
+    difficulty: 'easy',
   },
   {
     id: 'eng-3',
@@ -58,6 +61,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Punctuation: commas',
     domain: 'conventions-of-standard-english',
+    difficulty: 'medium',
   },
   {
     id: 'eng-4',
@@ -73,6 +77,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Word choice: apostrophes',
     domain: 'knowledge-of-language',
+    difficulty: 'easy',
   },
   {
     id: 'eng-5',
@@ -93,6 +98,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Punctuation: commas',
     domain: 'conventions-of-standard-english',
+    difficulty: 'medium',
   },
   {
     id: 'eng-6',
@@ -108,6 +114,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Subject-verb agreement',
     domain: 'conventions-of-standard-english',
+    difficulty: 'hard',
   },
   {
     id: 'eng-7',
@@ -128,6 +135,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Modifiers',
     domain: 'conventions-of-standard-english',
+    difficulty: 'medium',
   },
   {
     id: 'eng-8',
@@ -148,6 +156,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Punctuation: commas',
     domain: 'conventions-of-standard-english',
+    difficulty: 'medium',
   },
   {
     id: 'eng-9',
@@ -163,6 +172,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Transitions',
     domain: 'production-of-writing',
+    difficulty: 'easy',
   },
   {
     id: 'eng-10',
@@ -178,6 +188,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Verb tense',
     domain: 'conventions-of-standard-english',
+    difficulty: 'hard',
   },
   {
     id: 'eng-11',
@@ -193,6 +204,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Subject-verb agreement',
     domain: 'conventions-of-standard-english',
+    difficulty: 'easy',
   },
   {
     id: 'eng-12',
@@ -208,6 +220,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Comparatives',
     domain: 'conventions-of-standard-english',
+    difficulty: 'easy',
   },
   {
     id: 'eng-13',
@@ -223,6 +236,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Conciseness',
     domain: 'knowledge-of-language',
+    difficulty: 'easy',
   },
   {
     id: 'eng-14',
@@ -238,6 +252,7 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Word choice: apostrophes',
     domain: 'knowledge-of-language',
+    difficulty: 'easy',
   },
   {
     id: 'eng-15',
@@ -258,5 +273,161 @@ export const englishQuestions: Question[] = [
     },
     skill: 'Punctuation: commas',
     domain: 'conventions-of-standard-english',
+    difficulty: 'hard',
+  },
+  {
+    id: 'eng-16',
+    section: 'english',
+    prompt: 'The dog wagged [it\'s] tail happily.',
+    choices: ['NO CHANGE', 'its', "its'", 'their'],
+    answerIndex: 1,
+    explanation: 'The tail belongs to the dog, so the possessive "its" (no apostrophe) is needed — "it\'s" means "it is."',
+    distractorRationale: {
+      0: '"It\'s" means "it is," which doesn\'t fit here — the possessive form "its" is needed instead.',
+      2: '"Its\'" isn\'t a standard word — the possessive of "it" never takes an apostrophe.',
+      3: '"Their" is plural and doesn\'t agree with the singular "dog."',
+    },
+    skill: 'Word choice: apostrophes',
+    domain: 'knowledge-of-language',
+    difficulty: 'easy',
+  },
+  {
+    id: 'eng-17',
+    section: 'english',
+    prompt: 'The students [walks] to class every morning.',
+    choices: ['NO CHANGE', 'walking', 'walk', 'walked'],
+    answerIndex: 2,
+    explanation: '"Students" is plural, so the verb must be "walk," not the singular "walks."',
+    distractorRationale: {
+      0: '"Walks" is singular, but "students" is plural — the verb must be "walk."',
+      1: '"Walking" isn\'t a complete verb form here; the sentence needs a simple present-tense verb, not a participle.',
+      3: '"Walked" is past tense, but "every morning" describes a habitual action, which calls for present tense.',
+    },
+    skill: 'Subject-verb agreement',
+    domain: 'conventions-of-standard-english',
+    difficulty: 'easy',
+  },
+  {
+    id: 'eng-18',
+    section: 'english',
+    prompt: 'I studied all week. [Consequently], I felt confident on test day.',
+    choices: ['NO CHANGE', 'However,', 'In contrast,', 'Similarly,'],
+    answerIndex: 0,
+    explanation: '"Consequently" correctly signals that feeling confident was a result of studying — a cause-and-effect relationship.',
+    distractorRationale: {
+      1: '"However" signals contrast, but studying leading to confidence is a cause-and-effect relationship, not a contrast.',
+      2: '"In contrast" also signals a contrast, which doesn\'t fit — feeling confident is a result of studying, not an opposing idea.',
+      3: '"Similarly" suggests comparing two similar things, but this sentence describes a cause producing an effect.',
+    },
+    skill: 'Transitions',
+    domain: 'production-of-writing',
+    difficulty: 'easy',
+  },
+  {
+    id: 'eng-19',
+    section: 'english',
+    prompt: 'The coach asked the team to run faster, [jumping higher], and to hit harder.',
+    choices: ['NO CHANGE', 'to jump higher', 'to be jumping higher', 'having jumped higher'],
+    answerIndex: 1,
+    explanation: 'The other items in this list use the infinitive form ("to run," "to hit"), so parallel structure requires "to jump higher" as well.',
+    distractorRationale: {
+      0: '"Jumping higher" breaks the parallel infinitive structure established by "to run" and "to hit."',
+      2: '"To be jumping higher" is needlessly wordy and still breaks from the simple infinitive pattern of the other list items.',
+      3: '"Having jumped higher" shifts to a past-implying construction that doesn\'t match the forward-looking infinitives elsewhere in the list.',
+    },
+    skill: 'Parallel structure',
+    domain: 'conventions-of-standard-english',
+    difficulty: 'medium',
+  },
+  {
+    id: 'eng-20',
+    section: 'english',
+    prompt: 'The medication had a positive [affect] on her recovery.',
+    choices: ['NO CHANGE', 'effect', 'affects', 'effects'],
+    answerIndex: 1,
+    explanation: 'As a noun meaning "a result," the correct word is "effect," not "affect" (typically a verb meaning "to influence").',
+    distractorRationale: {
+      0: '"Affect" is normally a verb meaning to influence something; here the sentence needs the noun "effect," meaning a result.',
+      2: '"Affects" is a verb form, but this spot needs a noun (preceded by "a positive"), so "effect" is correct, not a verb.',
+      3: '"Effects" is plural, but the sentence uses the singular article "a," so the singular noun "effect" is needed.',
+    },
+    skill: 'Word choice: affect vs. effect',
+    domain: 'knowledge-of-language',
+    difficulty: 'medium',
+  },
+  {
+    id: 'eng-21',
+    section: 'english',
+    prompt: 'Because of the fact that ticket sales were low, [the concert was ultimately canceled in the end].',
+    choices: [
+      'NO CHANGE',
+      'the concert was ultimately canceled',
+      'the concert was canceled in the end',
+      'the concert was canceled',
+    ],
+    answerIndex: 3,
+    explanation: '"Ultimately" and "in the end" both repeat the same idea already implied by "canceled" — the most concise, non-redundant choice is simply "the concert was canceled."',
+    distractorRationale: {
+      0: '"Ultimately... in the end" is redundant — both phrases express the same idea twice.',
+      1: '"Ultimately" still adds a redundant word not needed alongside "canceled."',
+      2: '"In the end" is still an unnecessary redundant phrase paired with "canceled."',
+    },
+    skill: 'Conciseness',
+    domain: 'production-of-writing',
+    difficulty: 'medium',
+  },
+  {
+    id: 'eng-22',
+    section: 'english',
+    prompt: 'If the museum [was] open on Mondays, more visitors could plan their trips accordingly.',
+    choices: ['NO CHANGE', 'were', 'is', 'has been'],
+    answerIndex: 1,
+    explanation: 'This is a hypothetical, contrary-to-fact condition, which requires the subjunctive mood: "were," not "was," regardless of the singular subject.',
+    distractorRationale: {
+      0: '"Was" is the standard past tense, but hypothetical "if" clauses like this one require the subjunctive "were."',
+      2: '"Is" is present tense, but the sentence describes a hypothetical condition, which needs the subjunctive "were."',
+      3: '"Has been" doesn\'t fit the hypothetical, contrary-to-fact structure the sentence sets up with "if."',
+    },
+    skill: 'Subjunctive mood',
+    domain: 'conventions-of-standard-english',
+    difficulty: 'hard',
+  },
+  {
+    id: 'eng-23',
+    section: 'english',
+    prompt: "The committee's decision seemed [arbitrary], with no clear reasoning offered for why one proposal was chosen over another.",
+    choices: ['NO CHANGE', 'ambiguous', 'ambivalent', 'amicable'],
+    answerIndex: 0,
+    explanation: '"Arbitrary" (based on random choice, without reason) precisely fits a decision made "with no clear reasoning" — the other words describe unclear meaning, mixed feelings, or friendliness, none of which match.',
+    distractorRationale: {
+      1: '"Ambiguous" describes something with unclear or multiple meanings, not a decision lacking justification — it doesn\'t fit "no clear reasoning."',
+      2: '"Ambivalent" describes having mixed or conflicting feelings, not a decision that lacks a stated rationale.',
+      3: '"Amicable" means friendly or good-natured, which is unrelated to whether a decision had clear reasoning behind it.',
+    },
+    skill: 'Precise word choice',
+    domain: 'knowledge-of-language',
+    difficulty: 'hard',
+  },
+  {
+    id: 'eng-24',
+    section: 'english',
+    prompt:
+      "A writer is revising a paragraph about the economic benefits of renewable energy. Which of the following sentences, if inserted into the paragraph, would be LEAST relevant to the writer's focus?",
+    choices: [
+      'Solar panel installations have created thousands of new jobs in manufacturing and maintenance.',
+      'Wind farms often generate significant tax revenue for the rural communities that host them.',
+      'Solar panels first became commercially available in the 1950s.',
+      'Utility companies report lower long-term operating costs after switching to renewable sources.',
+    ],
+    answerIndex: 2,
+    explanation: "The paragraph's focus is economic benefits — job creation, tax revenue, and lower costs are all direct economic points, but the historical fact about when solar panels became available doesn't address any economic benefit.",
+    distractorRationale: {
+      0: "This directly supports the economic-benefits focus by citing job creation — it's relevant, not the answer.",
+      1: 'This is a clear economic benefit (tax revenue), which fits the paragraph\'s focus rather than deviating from it.',
+      3: 'Lower operating costs is a direct economic benefit, squarely on-topic for this paragraph.',
+    },
+    skill: 'Relevance to focus',
+    domain: 'production-of-writing',
+    difficulty: 'hard',
   },
 ]

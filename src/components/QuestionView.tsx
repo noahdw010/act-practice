@@ -1,6 +1,12 @@
 import { useQuiz } from '../context/QuizContext'
 import { PassagePane } from './PassagePane'
 
+const DIFFICULTY_STYLES: Record<string, string> = {
+  easy: 'bg-green-50 text-green-700 border-green-200',
+  medium: 'bg-blue-50 text-blue-700 border-blue-200',
+  hard: 'bg-amber-50 text-amber-700 border-amber-200',
+}
+
 export function QuestionView() {
   const { currentQuestion, currentBlock, selectedIndex, showFeedback, selectAnswer, nextQuestion, plan, questionIndex } =
     useQuiz()
@@ -20,25 +26,32 @@ export function QuestionView() {
       )}
 
       <div className="flex flex-col">
-        <div className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-400">{currentQuestion.skill}</div>
-        <p className="mb-5 text-lg text-slate-100">{currentQuestion.prompt}</p>
+        <div className="mb-2 flex items-center gap-2">
+          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{currentQuestion.skill}</span>
+          <span
+            className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${DIFFICULTY_STYLES[currentQuestion.difficulty]}`}
+          >
+            {currentQuestion.difficulty}
+          </span>
+        </div>
+        <p className="mb-5 text-lg text-slate-900">{currentQuestion.prompt}</p>
 
         <div className="flex flex-col gap-3">
           {currentQuestion.choices.map((choice, idx) => {
             const isSelected = selectedIndex === idx
             const isCorrectChoice = idx === currentQuestion.answerIndex
-            let stateClasses = 'border-slate-600 hover:border-slate-400 hover:bg-slate-800'
+            let stateClasses = 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
 
             if (showFeedback) {
               if (isCorrectChoice) {
-                stateClasses = 'border-green-500 bg-green-950 text-green-100'
+                stateClasses = 'border-green-400 bg-green-50 text-green-900'
               } else if (isSelected && !isCorrectChoice) {
-                stateClasses = 'border-red-500 bg-red-950 text-red-100'
+                stateClasses = 'border-red-400 bg-red-50 text-red-900'
               } else {
-                stateClasses = 'border-slate-700 opacity-60'
+                stateClasses = 'border-slate-200 bg-white opacity-60'
               }
             } else if (isSelected) {
-              stateClasses = 'border-blue-500 bg-blue-950 text-blue-100'
+              stateClasses = 'border-blue-500 bg-blue-50 text-blue-900'
             }
 
             return (
@@ -60,8 +73,8 @@ export function QuestionView() {
             <div
               className={`rounded-lg border p-4 text-sm ${
                 selectedIndex === currentQuestion.answerIndex
-                  ? 'border-green-800 bg-green-950/40 text-green-100'
-                  : 'border-red-800 bg-red-950/40 text-red-100'
+                  ? 'border-green-300 bg-green-50 text-green-900'
+                  : 'border-red-300 bg-red-50 text-red-900'
               }`}
             >
               <p className="mb-1 font-semibold">
@@ -76,8 +89,8 @@ export function QuestionView() {
                   </p>
                 )}
             </div>
-            <div className="rounded-lg border border-slate-700 bg-slate-800/60 p-4 text-sm text-slate-300">
-              <p className="mb-1 font-semibold text-slate-100">
+            <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
+              <p className="mb-1 font-semibold text-slate-900">
                 Why {String.fromCharCode(65 + currentQuestion.answerIndex)} is correct
               </p>
               <p>{currentQuestion.explanation}</p>
@@ -92,7 +105,7 @@ export function QuestionView() {
           <button
             onClick={nextQuestion}
             disabled={selectedIndex === null}
-            className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-40"
+            className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-40"
           >
             {isLast ? 'Finish section' : 'Next question'}
           </button>

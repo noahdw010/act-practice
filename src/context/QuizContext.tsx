@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { buildQuizPlan } from '../lib/quizEngine'
-import type { QuizBlock } from '../lib/quizEngine'
+import type { BuildQuizOptions, QuizBlock } from '../lib/quizEngine'
 import { estimateScores } from '../lib/scoreEstimate'
 import { saveAttempt } from '../lib/storage'
 import type { AnsweredQuestion, AttemptRecord, Mode, Section, SectionResult } from '../types'
@@ -21,7 +21,7 @@ interface QuizState {
 interface QuizContextValue extends QuizState {
   currentBlock: QuizBlock | null
   currentQuestion: QuizBlock['questions'][number] | null
-  startQuiz: (mode: Mode, sections: Section[]) => void
+  startQuiz: (mode: Mode, sections: Section[], options?: BuildQuizOptions) => void
   selectAnswer: (index: number) => void
   nextQuestion: () => void
   abandonQuiz: () => void
@@ -48,8 +48,8 @@ export function QuizProvider({ children }: { children: ReactNode }) {
   const currentBlock = state.plan ? state.plan.blocks[state.blockIndex] ?? null : null
   const currentQuestion = currentBlock ? currentBlock.questions[state.questionIndex] ?? null : null
 
-  const startQuiz = useCallback((mode: Mode, sections: Section[]) => {
-    const plan = buildQuizPlan(mode, sections)
+  const startQuiz = useCallback((mode: Mode, sections: Section[], options?: BuildQuizOptions) => {
+    const plan = buildQuizPlan(mode, sections, options)
     const firstBlock = plan.blocks[0]
     questionStartRef.current = Date.now()
     setState({
