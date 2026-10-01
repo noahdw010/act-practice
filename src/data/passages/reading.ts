@@ -30,4 +30,15 @@ When ocean temperatures rise even slightly above normal seasonal maximums, howev
 
 Because bleaching events are triggered by temperature anomalies as small as one or two degrees Celsius sustained over several weeks, reefs are considered especially sensitive indicators of ocean warming, and large-scale bleaching events have become increasingly frequent and widespread in recent decades.`,
   },
+  {
+    id: 'reading-p4',
+    title: 'Humanities: The Democratic Promise of the Public Library',
+    text: `When Andrew Carnegie began funding public libraries across the United States in the late nineteenth century, he described them as the closest thing a democracy had to a genuine equalizer. A library, unlike almost any other public institution, asked nothing of the people who walked through its doors — no fee, no credential, no proof of status — only curiosity.
+
+This premise, that access to information should not depend on wealth, has shaped the public library's identity ever since. Librarians in the early twentieth century saw themselves not merely as custodians of books but as advocates for a kind of civic self-education: a citizen who could read widely, the thinking went, was better equipped to participate meaningfully in public life.
+
+Critics have long pointed out that this promise has never been perfectly fulfilled. Rural communities were often the last to receive funding, and segregated library systems in parts of the country denied Black patrons the very access the institution claimed to guarantee. Even today, disparities in library funding between wealthy and low-income districts complicate the idealized picture of the library as a great equalizer.
+
+Yet the underlying aspiration persists. In an era when so much information now sits behind paywalls or requires a stable internet connection and a working device, the public library's original bargain — walk in, and read anything, for free — remains a strikingly radical one, however imperfectly it has been realized in practice.`,
+  },
 ]

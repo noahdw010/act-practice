@@ -43,4 +43,18 @@ export const sciencePassages: Passage[] = [
       ],
     },
   },
+  {
+    id: 'science-p4',
+    title: 'Experiment: Insulation Material and Heat Retention',
+    text: `A student tested how different insulating materials affect heat retention in a small box. Four identical boxes were built from the same base materials, then lined with a different insulating material: Material A (thin foam), Material B (thick foam), Material C (fiberglass), or Material D (no insulation, a control). Each box was filled with water at 80°C, sealed, and left in a room held at a constant 20°C. The water temperature was measured every 30 minutes for 2 hours.`,
+    table: {
+      headers: ['Material', 'R-value (higher = more insulating)', 'Temp at 0 min (°C)', 'Temp at 60 min (°C)', 'Temp at 120 min (°C)'],
+      rows: [
+        ['A (thin foam)', '2', '80', '58', '44'],
+        ['B (thick foam)', '5', '80', '68', '58'],
+        ['C (fiberglass)', '7', '80', '73', '66'],
+        ['D (none, control)', '0', '80', '42', '28'],
+      ],
+    },
+  },
 ]
