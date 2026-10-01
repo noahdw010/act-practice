@@ -40,6 +40,10 @@ export function ResultsPage() {
     r.answered.filter((a) => !a.correct).map((a) => ({ section: r.section, ...a })),
   )
 
+  const flagged = completedAttempt.sectionResults.flatMap((r) =>
+    r.answered.filter((a) => a.flagged).map((a) => ({ section: r.section, ...a })),
+  )
+
   const weakAreas = Object.entries(
     missed.reduce<Record<string, number>>((acc, m) => {
       acc[m.question.skill] = (acc[m.question.skill] ?? 0) + 1
@@ -126,6 +130,67 @@ export function ResultsPage() {
         </div>
       )}
 
+      {flagged.length > 0 && (
+        <div className="mt-8">
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-amber-700">
+            🚩 Flagged for review ({flagged.length})
+          </h2>
+          <div className="flex flex-col gap-4">
+            {flagged.map((m) => (
+              <div key={m.question.id} className="rounded-xl border-2 border-amber-300 bg-amber-50/40 p-4 shadow-sm">
+                <div className="mb-1 flex items-center justify-between text-xs font-medium uppercase tracking-wide text-slate-500">
+                  <span>
+                    {SECTION_META[m.section as Section].label} · {m.question.skill}
+                  </span>
+                  <span className={m.correct ? 'normal-case text-green-700' : 'normal-case text-red-700'}>
+                    {m.correct ? 'You got this right' : 'You missed this'}
+                  </span>
+                </div>
+                <p className="mb-2 text-sm text-slate-800">{m.question.prompt}</p>
+
+                <div className="flex flex-col gap-1 text-sm">
+                  {m.question.choices.map((choice, idx) => {
+                    const isCorrect = idx === m.question.answerIndex
+                    const isPicked = idx === m.selectedIndex
+                    if (!isCorrect && !isPicked) return null
+                    return (
+                      <p key={idx} className={isCorrect ? 'text-green-700' : 'text-red-700'}>
+                        <span className="font-semibold">
+                          {String.fromCharCode(65 + idx)}. {choice}
+                        </span>{' '}
+                        {isCorrect ? '(correct)' : '(your answer)'}
+                      </p>
+                    )
+                  })}
+                  {m.selectedIndex === null && <p className="italic text-slate-500">You didn't answer this one in time.</p>}
+                </div>
+
+                <div className="mt-3 rounded-lg bg-white p-3 text-sm text-slate-700">
+                  <p className="mb-1 font-semibold text-slate-900">
+                    Why {String.fromCharCode(65 + m.question.answerIndex)} is correct
+                  </p>
+                  <p>{m.question.explanation}</p>
+                </div>
+
+                {!m.correct && m.question.distractorRationale && Object.keys(m.question.distractorRationale).length > 0 && (
+                  <div className="mt-2 rounded-lg bg-white p-3 text-sm text-slate-700">
+                    <p className="mb-1 font-semibold text-slate-900">Why the other choices are wrong</p>
+                    <ul className="flex flex-col gap-1">
+                      {Object.entries(m.question.distractorRationale).map(([idx, note]) => (
+                        <li key={idx}>
+                          <span className="font-semibold text-slate-800">{String.fromCharCode(65 + Number(idx))}.</span>{' '}
+                          {note}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {missed.length > 0 && (
         <div className="mt-8">
           <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500">Review missed questions</h2>
@@ -134,6 +199,7 @@ export function ResultsPage() {
               <div key={m.question.id} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
                 <div className="mb-1 text-xs font-medium uppercase tracking-wide text-slate-500">
                   {SECTION_META[m.section as Section].label} · {m.question.skill}
+                  {m.flagged && <span className="ml-2 text-amber-600">🚩 flagged</span>}
                 </div>
                 <p className="mb-2 text-sm text-slate-800">{m.question.prompt}</p>
 

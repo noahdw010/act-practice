@@ -48,6 +48,8 @@ export interface AnsweredQuestion {
   selectedIndex: number | null
   correct: boolean
   timeSpentSec: number
+  /** Whether the test-taker marked this question for review during the quiz. */
+  flagged: boolean
 }
 
 export interface SectionResult {

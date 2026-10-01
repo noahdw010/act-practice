@@ -8,14 +8,25 @@ const DIFFICULTY_STYLES: Record<string, string> = {
 }
 
 export function QuestionView() {
-  const { currentQuestion, currentBlock, selectedIndex, showFeedback, selectAnswer, nextQuestion, plan, questionIndex } =
-    useQuiz()
+  const {
+    currentQuestion,
+    currentBlock,
+    selectedIndex,
+    showFeedback,
+    selectAnswer,
+    nextQuestion,
+    plan,
+    questionIndex,
+    flaggedIds,
+    toggleFlag,
+  } = useQuiz()
 
   if (!currentQuestion || !currentBlock || !plan) return null
 
   const isLast = questionIndex === currentBlock.questions.length - 1
   const hasPassage = Boolean(currentQuestion.passageId)
   const isPracticeMode = plan.mode === 'practice'
+  const isFlagged = flaggedIds.has(currentQuestion.id)
 
   return (
     <div className={`grid gap-6 ${hasPassage ? 'md:grid-cols-2' : 'grid-cols-1'}`}>
@@ -26,13 +37,26 @@ export function QuestionView() {
       )}
 
       <div className="flex flex-col">
-        <div className="mb-2 flex items-center gap-2">
-          <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{currentQuestion.skill}</span>
-          <span
-            className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${DIFFICULTY_STYLES[currentQuestion.difficulty]}`}
+        <div className="mb-2 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{currentQuestion.skill}</span>
+            <span
+              className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${DIFFICULTY_STYLES[currentQuestion.difficulty]}`}
+            >
+              {currentQuestion.difficulty}
+            </span>
+          </div>
+          <button
+            onClick={toggleFlag}
+            className={`flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors ${
+              isFlagged
+                ? 'border-amber-300 bg-amber-50 text-amber-700 hover:bg-amber-100'
+                : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:bg-slate-50'
+            }`}
           >
-            {currentQuestion.difficulty}
-          </span>
+            <span aria-hidden="true">{isFlagged ? '🚩' : '⚑'}</span>
+            {isFlagged ? 'Flagged for review' : 'Mark for review'}
+          </button>
         </div>
         <p className="mb-5 text-lg text-slate-900">{currentQuestion.prompt}</p>
 
@@ -101,6 +125,7 @@ export function QuestionView() {
         <div className="mt-6 flex items-center justify-between">
           <span className="text-sm text-slate-500">
             Question {questionIndex + 1} of {currentBlock.questions.length}
+            {isFlagged && <span className="ml-2 text-amber-600">🚩 flagged</span>}
           </span>
           <button
             onClick={nextQuestion}

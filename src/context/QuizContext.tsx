@@ -16,6 +16,7 @@ interface QuizState {
   showFeedback: boolean
   remainingSec: number | null
   completedAttempt: AttemptRecord | null
+  flaggedIds: Set<string>
 }
 
 interface QuizContextValue extends QuizState {
@@ -25,6 +26,7 @@ interface QuizContextValue extends QuizState {
   selectAnswer: (index: number) => void
   nextQuestion: () => void
   abandonQuiz: () => void
+  toggleFlag: () => void
 }
 
 const QuizContext = createContext<QuizContextValue | null>(null)
@@ -39,6 +41,7 @@ const initialState: QuizState = {
   showFeedback: false,
   remainingSec: null,
   completedAttempt: null,
+  flaggedIds: new Set(),
 }
 
 export function QuizProvider({ children }: { children: ReactNode }) {
@@ -60,11 +63,12 @@ export function QuizProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const finalizeSectionResult = useCallback(
-    (block: QuizBlock, answers: AnsweredQuestion[]): SectionResult => {
+    (block: QuizBlock, answers: AnsweredQuestion[], flaggedIds: Set<string>): SectionResult => {
       const filled: AnsweredQuestion[] = block.questions.map((q) => {
         const existing = answers.find((a) => a.question.id === q.id)
-        if (existing) return existing
-        return { question: q, selectedIndex: null, correct: false, timeSpentSec: 0 }
+        const flagged = flaggedIds.has(q.id)
+        if (existing) return { ...existing, flagged }
+        return { question: q, selectedIndex: null, correct: false, timeSpentSec: 0, flagged }
       })
       return {
         section: block.section,
@@ -115,7 +119,7 @@ export function QuizProvider({ children }: { children: ReactNode }) {
   const advanceBlock = useCallback(() => {
     setState((prev) => {
       if (!prev.plan || !currentBlock) return prev
-      const sectionResult = finalizeSectionResult(currentBlock, prev.blockAnswers)
+      const sectionResult = finalizeSectionResult(currentBlock, prev.blockAnswers, prev.flaggedIds)
       const nextSectionResults = [...prev.allSectionResults, sectionResult]
       const nextBlockIndex = prev.blockIndex + 1
       const nextBlock = prev.plan.blocks[nextBlockIndex]
@@ -153,7 +157,16 @@ export function QuizProvider({ children }: { children: ReactNode }) {
       if (!currentQuestion) return prev
       const correct = index === currentQuestion.answerIndex
       const timeSpentSec = Math.max(0, Math.round((Date.now() - questionStartRef.current) / 1000))
-      const answered: AnsweredQuestion = { question: currentQuestion, selectedIndex: index, correct, timeSpentSec }
+      // `flagged` is a placeholder here — the authoritative value is stamped from
+      // `flaggedIds` when the section is finalized, since a flag can be toggled
+      // before or after an answer is selected.
+      const answered: AnsweredQuestion = {
+        question: currentQuestion,
+        selectedIndex: index,
+        correct,
+        timeSpentSec,
+        flagged: prev.flaggedIds.has(currentQuestion.id),
+      }
       const withoutExisting = prev.blockAnswers.filter((a) => a.question.id !== currentQuestion.id)
       return {
         ...prev,
@@ -161,6 +174,16 @@ export function QuizProvider({ children }: { children: ReactNode }) {
         showFeedback: prev.plan?.mode === 'practice',
         blockAnswers: [...withoutExisting, answered],
       }
+    })
+  }, [currentQuestion])
+
+  const toggleFlag = useCallback(() => {
+    setState((prev) => {
+      if (!currentQuestion) return prev
+      const next = new Set(prev.flaggedIds)
+      if (next.has(currentQuestion.id)) next.delete(currentQuestion.id)
+      else next.add(currentQuestion.id)
+      return { ...prev, flaggedIds: next }
     })
   }, [currentQuestion])
 
@@ -207,8 +230,9 @@ export function QuizProvider({ children }: { children: ReactNode }) {
       selectAnswer,
       nextQuestion,
       abandonQuiz,
+      toggleFlag,
     }),
-    [state, currentBlock, currentQuestion, startQuiz, selectAnswer, nextQuestion, abandonQuiz],
+    [state, currentBlock, currentQuestion, startQuiz, selectAnswer, nextQuestion, abandonQuiz, toggleFlag],
   )
 
   return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>
